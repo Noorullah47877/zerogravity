@@ -238,6 +238,52 @@ curl http://localhost:8741/v1beta/models/gemini-3-flash:generateContent \
 
 > **Note:** If `ZEROGRAVITY_API_KEY` is not set, no authentication is enforced (backward-compatible). Public compatibility routes include `/health`, `/`, `/api/event_logging/batch`, `/.well-known/{*path}`, and `/v1/images/{*path}`.
 
+## Debug / Testing
+
+### Simulate Account State
+
+Inject fake runtime state for an account to test rotation selection, quota behavior, and error handling without real Google traffic. Requires `ZEROGRAVITY_DEBUG=1` environment variable -- returns 404 when disabled.
+
+```bash
+# Mark an account as banned
+curl -X POST http://localhost:8741/v1/debug/simulate \
+  -H "Content-Type: application/json" \
+  -d '{"email": "user@gmail.com", "banned": true}'
+
+# Simulate quota exhaustion (triggers rotation on next request)
+curl -X POST http://localhost:8741/v1/debug/simulate \
+  -H "Content-Type: application/json" \
+  -d '{"email": "user@gmail.com", "remaining_fraction": 0.0, "cooldown_secs": 3600}'
+
+# Clear a ban and restore quota
+curl -X POST http://localhost:8741/v1/debug/simulate \
+  -H "Content-Type: application/json" \
+  -d '{"email": "user@gmail.com", "banned": false, "remaining_fraction": 1.0}'
+```
+
+**Request body:**
+
+| Field                | Type    | Required | Description                                       |
+| -------------------- | ------- | -------- | ------------------------------------------------- |
+| `email`              | string  | Yes      | Account email to modify                           |
+| `banned`             | boolean | No       | Mark account as banned (skipped by rotation)      |
+| `restricted`         | boolean | No       | Mark account as restricted (skipped by rotation)  |
+| `cooldown_secs`      | integer | No       | Seconds until account is eligible for selection   |
+| `remaining_fraction` | float   | No       | Quota remaining (0.0 = exhausted, 1.0 = full)     |
+
+Only provided fields are applied -- omitted fields keep their current value. The response returns the account's current state after the update.
+
+**Enable debug mode:**
+
+```bash
+# Docker Compose
+environment:
+  - ZEROGRAVITY_DEBUG=1
+
+# Or export before starting
+export ZEROGRAVITY_DEBUG=1
+```
+
 ## All Endpoints
 
 | Method     | Path                              | Description                           |
@@ -261,6 +307,7 @@ curl http://localhost:8741/v1beta/models/gemini-3-flash:generateContent \
 | `GET`      | `/v1/quota`                       | Quota and rate limits                 |
 | `GET`      | `/v1/images/*`                    | Serve generated images                |
 | `POST`     | `/v1/replay/raw`                  | Send pre-built trace through MITM     |
+| `POST`     | `/v1/debug/simulate`              | Inject account state (debug only)     |
 | `GET`      | `/health`                         | Health check                          |
 | `GET/POST` | `/`                               | Compatibility root (returns status)   |
 | `POST`     | `/api/event_logging/batch`        | Compatibility event logging endpoint  |

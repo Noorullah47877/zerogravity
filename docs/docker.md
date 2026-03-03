@@ -33,7 +33,7 @@ services:
       - "8741:8741"
       - "443:443"
     volumes:
-      - ./accounts.json:/root/.config/zerogravity/accounts.json:ro
+      - ./accounts.json:/root/.config/zerogravity/accounts.json
       - ./aliases.json:/root/.config/zerogravity/aliases.json
     environment:
       - ZEROGRAVITY_API_KEY=${ZEROGRAVITY_API_KEY:-}
@@ -62,7 +62,7 @@ services:
 ```bash
 docker run -d --name zerogravity \
   -p 8741:8741 \
-  -v ./accounts.json:/root/.config/zerogravity/accounts.json:ro \
+  -v ./accounts.json:/root/.config/zerogravity/accounts.json \
   ghcr.io/nikketryhard/zerogravity:latest
 ```
 
@@ -88,7 +88,7 @@ docker run -d --name zerogravity \
 
 | Host Path         | Container Path                               | Purpose                          |
 | ----------------- | -------------------------------------------- | -------------------------------- |
-| `./accounts.json` | `/root/.config/zerogravity/accounts.json:ro` | Multi-account rotation (primary) |
+| `./accounts.json` | `/root/.config/zerogravity/accounts.json` | Multi-account rotation (primary) |
 | `./aliases.json`  | `/root/.config/zerogravity/aliases.json:ro`  | Custom model name aliases        |
 
 ## Environment Variables
